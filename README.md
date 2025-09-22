@@ -35,5 +35,20 @@ It consists of 3 parts:
 When a JWT is issued to a user, the authenticating server (the issuing authority) needs to sign that token.  
 The signature is a mechanism to ensure that the payload can be trusted.  
 
+### How does it work?
 
-@3:12
+- The server takes some secret key, to which it adds the header and the payload
+- Then, it runs these 3 things through a hashing function to output the signature
+
+The signature is just a hash that is created based on the header + payload + secret key.  
+That signature is included in the token itself.  
+
+### How do we verify the signature of JSON Web Token?
+
+- When verifying a JWT, the receiver uses the same secret key and hashing algorithm to re-compute the HMAC (hash message authentication code) over the header and payload. 
+- Then it compares this recomputed signature with the signature presented in the JWT.  
+- If and only if both signatures match, it proves that the JWT is valid and unaltered.
+- If signatures don't match, then the authorization fails
+
+
+@4:06
