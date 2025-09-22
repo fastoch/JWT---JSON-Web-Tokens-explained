@@ -28,8 +28,12 @@ It consists of 3 parts:
   - the expiry time (Unix timestamp of when this token is not valid anymore),
   - the issuedAt (**iat**) timestamp of when the token was created
   - and other fields needed for your application, such as the user email and role (access level)...
-- the **signature**: 
+- the **signature**
+
+## The signature
+
+When a JWT is issued to a user, the authenticating server (the issuing authority) needs to sign that token.  
+The signature is a mechanism to ensure that the payload can be trusted.  
 
 
-
-@1:37
+@3:12
