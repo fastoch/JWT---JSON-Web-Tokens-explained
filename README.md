@@ -18,6 +18,18 @@ These tokens are usually provided in the **Authorization Header** as a bearer to
 
 # Anatomy of a JSON Web Token
 
+<img width="681" height="92" alt="image" src="https://github.com/user-attachments/assets/5c9d9472-8feb-47c6-8098-ae6a037a595e" />
+
+It consists of 3 parts:
+- the **header**: contains metadata about the token like its type and the algorithm that is used to create the signature
+- the **payload**, which includes fields such as:
+  - the token issuer (where does the token come from),
+  - the subject (e.g., userId),
+  - the expiry time (Unix timestamp of when this token is not valid anymore),
+  - the issuedAt (**iat**) timestamp of when the token was created
+  - and other fields needed for your application, such as the user email and role (access level)...
+- the **signature**: 
+
 
 
 @1:37
