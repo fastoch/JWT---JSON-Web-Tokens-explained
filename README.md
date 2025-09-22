@@ -50,5 +50,19 @@ That signature is included in the token itself.
 - If and only if both signatures match, it proves that the JWT is valid and unaltered.
 - If signatures don't match, then the authorization fails
 
+# JWTs are stateless
 
-@4:06
+The JWT is sent as part of each and every HTTP request, most commonly in the Authorization header using the Bearer schema.  
+
+JWTs are called **stateless** because the token itself carries the full information needed for authentication, removing the requirement for the server to keep user session state.
+
+# Why do we need refresh tokens?
+
+JWTs need to be very short-lived (a few minutes), because if a JWT is compromised, an attacker could use it to access resources until the token expires.  
+Every time a token expires, a request is automatically being sent to refresh that token.  
+
+The refresh token we've mentioned earlier is saved in the database and associated with the user ID (or with a certain session or a specific device).  
+That way, whenever the access token (JWT) expires, the user can provide their refresh token to ask for a new access token.  
+
+
+@7:32/9:17
