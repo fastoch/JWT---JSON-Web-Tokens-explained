@@ -52,21 +52,25 @@ That signature is included in the token itself.
 
 # JWTs are stateless
 
-The JWT is sent as part of each and every HTTP request, most commonly in the Authorization header using the Bearer schema.  
+The JWT is sent as part of each and every HTTP request, most commonly in the **Authorization header** using the **Bearer** schema.  
 
-JWTs are called **stateless** because the token itself carries the full information needed for authentication, removing the requirement for the server to keep user session state.
+JWTs are called **stateless** because the token itself carries all the information needed for authorization, removing the requirement for the server to keep user session state.  
+In other words, we are able to authorize many requests without having to communicate with an auth server for every single request.
 
 # Why do we need refresh tokens?
 
 JWTs need to be very short-lived (a few minutes), because if a JWT is compromised, an attacker could use it to access resources until the token expires.  
 Every time a token expires, a request is automatically being sent to refresh that token.  
 
-The refresh token we've mentioned earlier is saved in the database and associated with the user ID (or with the session or device).  
+The refresh token we've mentioned earlier is saved in the **database** and associated with the user ID (or with the session or device).  
 That way, whenever the access token (JWT) expires, the user can provide their refresh token to ask for a new access token.  
 
 # How to secure the refresh token?
 
-- by renewing (rotating) the refresh token after each refresh request
-- 
+By renewing (rotating) the refresh token after each refresh request.
 
-@7:32/9:17
+# Important considerations
+
+For sensitive or destructive operations such as changing a password or deleting an account, it's best to use database records (refresh tokens) as the source of truth.  
+
+Issue short-lived JWTs to mitigate the risk of outdated claims and minimize damage if tokens are stolen.  
