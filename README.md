@@ -61,8 +61,12 @@ JWTs are called **stateless** because the token itself carries the full informat
 JWTs need to be very short-lived (a few minutes), because if a JWT is compromised, an attacker could use it to access resources until the token expires.  
 Every time a token expires, a request is automatically being sent to refresh that token.  
 
-The refresh token we've mentioned earlier is saved in the database and associated with the user ID (or with a certain session or a specific device).  
+The refresh token we've mentioned earlier is saved in the database and associated with the user ID (or with the session or device).  
 That way, whenever the access token (JWT) expires, the user can provide their refresh token to ask for a new access token.  
 
+# How to secure the refresh token?
+
+- by renewing (rotating) the refresh token after each refresh request
+- 
 
 @7:32/9:17
